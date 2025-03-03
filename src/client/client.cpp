@@ -168,7 +168,6 @@ void listener_message_receive(tcp::socket &socket)
     }
     catch (std::exception &e)
     {
-        std::cerr << "[ERROR] Connection lost: " << e.what() << std::endl;
         cleanup_connection();
     }
 }
@@ -198,6 +197,12 @@ void handle_connect(std::vector<std::string> args)
         std::cout << "Invalid CONNECT command. Use:\n"
                   << "  CONNECT <serverIP> <serverPort> <clientName>\n"
                   << "  CONNECT <serverPort> <clientName>\n";
+        return;
+    }
+
+    if (connected)
+    {
+        std::cout << "[WARNING] Already conneedted";
         return;
     }
 
