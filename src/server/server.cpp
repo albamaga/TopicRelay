@@ -139,7 +139,8 @@ void client_handler(std::shared_ptr<tcp::socket> socket)
 
             if (error == boost::asio::error::eof)
             {
-                std::cout << "Client disconnected.\n";
+                ClientMetadata clinet = get_client_metadata(socket);
+                log_action("DISCONNECT", clinet, error.message());
                 break;
             }
             else if (error)
@@ -346,7 +347,7 @@ void handle_unsubscribe(std::shared_ptr<tcp::socket> socket, std::string topic)
     ClientMetadata client = get_client_metadata(socket);
     log_action("UNSUBSCRIBE", client, topic);
 
-    send_message(socket, "Unsubscribed from " + topic);
+    send_message(socket, "[SERVER] Unsubscribed from " + topic);
 }
 
 /**
