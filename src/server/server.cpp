@@ -66,7 +66,7 @@ void log_action(const std::string &action, const ClientMetadata &client, const s
 int main(int argc, char *argv[])
 {
     // Argument parsing using argparse
-    argparse::ArgumentParser program("server");
+    argparse::ArgumentParser program("server", "1.0.1-nightly");
 
     program.add_argument("-l", "--listen")
         .default_value(1999)

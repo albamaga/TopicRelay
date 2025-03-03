@@ -44,7 +44,7 @@ void cleanup_connection();
  */
 int main(int argc, char *argv[])
 {
-    argparse::ArgumentParser program("client");
+    argparse::ArgumentParser program("client", "1.0.1-nightly");
 
     program.add_argument("-s", "--server")
         .default_value(std::string("127.0.0.1"))
